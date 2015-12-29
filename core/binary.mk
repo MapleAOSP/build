@@ -250,6 +250,11 @@ endif
 
 my_cppflags := $(my_cpp_std_version) $(my_cppflags)
 
+# Include DragonTC Optimizations
+ifneq ($(DISABLE_DTC_OPTS),true)
+  include $(BUILD_SYSTEM)/dragontc.mk
+endif
+
 # Export compiler type for display
 ifneq ($(my_clang),true)
     my_compiler := gcc
