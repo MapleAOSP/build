@@ -88,7 +88,6 @@ copy2(updater, "%s/update-binary" % updater_dir)
 updater_script = "%s/updater-script" % updater_dir
 
 # create the contents
-contents = "ui_print(\"benzoCore64 Kernel\");\n"
 if boot_partition_type == "mtd":
     contents += "package_extract_file(\"boot.img\", \"/tmp/boot.img\");\n"
     contents += "write_raw_image(\"/tmp/boot.img\", \"%s\");\n" % boot_partition
