@@ -1846,11 +1846,7 @@ INTERNAL_OTA_PACKAGE_TARGET := $(PRODUCT_OUT)/$(name).zip
 
 $(INTERNAL_OTA_PACKAGE_TARGET): KEY_CERT_PAIR := $(DEFAULT_KEY_CERT_PAIR)
 
-ifneq ($(CUSTOM_BUILD),)
-    $(INTERNAL_OTA_PACKAGE_TARGET): backuptool := true
-else
-    $(INTERNAL_OTA_PACKAGE_TARGET): backuptool := false
-endif
+$(INTERNAL_OTA_PACKAGE_TARGET): backuptool := true
 
 BOOT_ZIP_FROM_IMAGE_SCRIPT := ./build/tools/releasetools/boot_flash_from_image
 KERNEL_PATH := $(TARGET_KERNEL_SOURCE)/arch/arm64/configs/$(TARGET_KERNEL_CONFIG)
