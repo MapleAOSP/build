@@ -215,20 +215,22 @@ endif
 # For Java 1.7/1.8, we require OpenJDK on linux and Oracle JDK on Mac OS.
 requires_openjdk := false
 ifeq ($(BUILD_OS),linux)
-requires_openjdk := false
+requires_openjdk := optional
 endif
 
 
 # Check for the current jdk
-ifeq ($(requires_openjdk), true)
+ifneq (,$(filter $(requires_openjdk),true optional))
 # The user asked for openjdk, so check that the host
 # java version is really openjdk and not some other JDK.
 ifeq ($(shell echo '$(java_version_str)' | grep -i openjdk),)
+ifneq ($(requires_openjdk),optional)
 $(info ************************************************************)
 $(info You asked for an OpenJDK based build but your version is)
 $(info $(java_version_str).)
 $(info ************************************************************)
 $(error stop)
+endif # don't descriminate
 endif # java version is not OpenJdk
 else # if requires_openjdk
 ifneq ($(shell echo '$(java_version_str)' | grep -i openjdk),)
