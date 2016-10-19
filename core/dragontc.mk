@@ -44,23 +44,6 @@ ifeq (1,$(words $(filter $(ENABLE_DTC),$(LOCAL_MODULE))))
   my_clang := true
 endif
 
-# Disable DragonTC on current module if requested.
-ifeq ($(my_clang),true)
-  ifeq (1,$(words $(filter $(DISABLE_DTC),$(LOCAL_MODULE))))
-    my_cc := $(AOSP_CLANG)
-    my_cxx := $(AOSP_CLANG_CXX)
-    ifeq ($(HOST_OS),darwin)
-      # Darwin is really bad at dealing with idiv/sdiv. Don't use krait on Darwin.
-      CLANG_CONFIG_arm_EXTRA_CFLAGS += -mcpu=cortex-a9
-    else
-      CLANG_CONFIG_arm_EXTRA_CFLAGS += -mcpu=krait
-    endif
-  else
-    CLANG_CONFIG_arm_EXTRA_CFLAGS += -mcpu=krait2
-  endif
-endif
-
-
 #################
 ##  P O L L Y  ##
 #################
@@ -121,7 +104,7 @@ libmpeg2dec
 # Set DISABLE_POLLY based on arch
 DISABLE_POLLY := \
   $(DISABLE_POLLY_$(TARGET_ARCH)) \
-	$(DISABLE_DTC) \
+  $(DISABLE_DTC) \
   $(LOCAL_DISABLE_POLLY)
 
 # Set POLLY based on DISABLE_POLLY
