@@ -99,7 +99,8 @@ libwebrtc% \
 libmusicbundle \
 libreverb \
 libscrypt_static \
-libmpeg2dec
+libmpeg2dec \
+libyuv_static
 
 # Set DISABLE_POLLY based on arch
 DISABLE_POLLY := \
