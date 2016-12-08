@@ -37,7 +37,7 @@ endif
 $(combo_2nd_arch_prefix)TARGET_NDK_GCC_VERSION := 4.9
 
 ifeq ($(strip $(TARGET_GCC_VERSION_EXP)),)
-$(combo_2nd_arch_prefix)TARGET_GCC_VERSION := 4.9
+$(combo_2nd_arch_prefix)TARGET_GCC_VERSION := 6.2
 else
 $(combo_2nd_arch_prefix)TARGET_GCC_VERSION := $(TARGET_GCC_VERSION_EXP)
 endif
