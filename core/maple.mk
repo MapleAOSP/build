@@ -1,9 +1,8 @@
-ALL += camera.msm8084 gps.msm8084 gralloc.msm8084 libF77blas libbluetooth_jni bluetooth.mapsapi bluetooth.default bluetooth.mapsapi libbt-brcm_stack
+ALL += camera* gps* gralloc* libF77blas libbluetooth_jni bluetooth.mapsapi bluetooth.default bluetooth.mapsapi libbt-brcm_stack
 DISABLE_ARM_MODE := libfs_mgr liblog libunwind libnetutils libziparchive libsync libusbhost libjnigraphics libstagefright_avc_common libmmcamera_interface pppd clatd libsoftkeymasterdevice sdcard logd mm-qcamera-app racoon libdiskconfig libmm-qcamera librmnetctl libjavacore camera.% libandroid_servers libmedia_jni librs_jni libhwui libandroidfw linker $(ALL)
-DISABLE_ANALYZER := libbluetooth_jni bluetooth.mapsapi bluetooth.default bluetooth.mapsapi libbt-brcm_stack audio.a2dp.default libbt-brcm_gki libbt-utils libbt-qcom_sbc_decoder libbt-brcm_bta libbt-brcm_stack libbt-vendor libbtprofile libbtdevice libbtcore bdt bdtest libbt-hci libosi ositests libbluetooth_jni net_test_osi net_test_device net_test_btcore net_bdtool net_hci bdAddrLoader keystore* memtrack* hwcomposer* audio.primary* $(BLUETOOTH)
+DISABLE_ANALYZER :=  libbluetooth_jni bluetooth.mapsapi bluetooth.default bluetooth.mapsapi libbt-brcm_stack audio.a2dp.default libbt-brcm_gki libbt-utils libbt-qcom_sbc_decoder libbt-brcm_bta libbt-brcm_stack libbt-vendor libbtprofile libbtdevice libbtcore bdt bdtest libbt-hci libosi ositests libbluetooth_jni net_test_osi net_test_device net_test_btcore net_bdtool net_hci bdAddrLoader libc_bionic $(ALL)
 DISABLE_OPENMP := libc_tzcode libbluetooth_jni_32 *libblas libF77blas libdl libjni_latinime $(ALL)
 DISABLE_O3 := libaudioflinger $(ALL)
-DISABLE_ARCHI := libaudioflinger $(ALL)
 
 # Clean local module flags
 my_cflags :=  $(filter-out -Wall -Wextra -Weverything -Werror -Werror=% -g,$(my_cflags)) -g0 -Wno-error -w
