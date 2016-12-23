@@ -30,7 +30,7 @@ DISABLE_DTC := \
 
 # Enable DragonTC on GCC modules. Split up by arch.
 ENABLE_DTC_arm :=
-ENABLE_DTC_arm64 :=
+ENABLE_DTC_arm64 := mkfs.f2fs
 
 # Set ENABLE_DTC based on arch
 ENABLE_DTC := \
