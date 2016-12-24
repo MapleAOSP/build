@@ -100,7 +100,9 @@ libmusicbundle \
 libreverb \
 libscrypt_static \
 libmpeg2dec \
-libyuv_static
+libyuv_static \
+libcrypto% \
+libgui
 
 # Set DISABLE_POLLY based on arch
 DISABLE_POLLY := \

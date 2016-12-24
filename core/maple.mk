@@ -1,7 +1,7 @@
 ALL += camera* gps* gralloc* libF77blas libbluetooth_jni bluetooth.mapsapi bluetooth.default bluetooth.mapsapi libbt-brcm_stack
-DISABLE_ARM_MODE := libfs_mgr liblog libunwind libnetutils libziparchive libsync libusbhost libjnigraphics libstagefright_avc_common libmmcamera_interface pppd clatd libsoftkeymasterdevice sdcard logd mm-qcamera-app racoon libdiskconfig libmm-qcamera librmnetctl libjavacore camera.% libandroid_servers libmedia_jni librs_jni libhwui libandroidfw linker $(ALL)
+#DISABLE_ARM_MODE := libfs_mgr liblog libunwind libnetutils libziparchive libsync libusbhost libjnigraphics libstagefright_avc_common libmmcamera_interface pppd clatd libsoftkeymasterdevice sdcard logd mm-qcamera-app racoon libdiskconfig libmm-qcamera librmnetctl libjavacore camera.% libandroid_servers libmedia_jni librs_jni libhwui libandroidfw linker libgui $(ALL)
 DISABLE_ANALYZER :=  libbluetooth_jni bluetooth.mapsapi bluetooth.default bluetooth.mapsapi libbt-brcm_stack audio.a2dp.default libbt-brcm_gki libbt-utils libbt-qcom_sbc_decoder libbt-brcm_bta libbt-brcm_stack libbt-vendor libbtprofile libbtdevice libbtcore bdt bdtest libbt-hci libosi ositests libbluetooth_jni net_test_osi net_test_device net_test_btcore net_bdtool net_hci bdAddrLoader libc_bionic $(ALL)
-DISABLE_OPENMP := libc_tzcode libbluetooth_jni_32 *libblas libF77blas libdl libjni_latinime $(ALL)
+DISABLE_OPENMP := libc libc_tzcode libbluetooth_jni_32 *libblas libF77blas libdl libjni_latinime $(ALL)
 DISABLE_O3 := libaudioflinger $(ALL)
 
 # Clean local module flags
@@ -13,27 +13,27 @@ ifndef LOCAL_IS_HOST_MODULE
   ifneq (1,$(words $(filter $(DISABLE_ARM_MODE),$(LOCAL_MODULE))))
     ifeq ($(TARGET_ARCH),arm)
       ifeq ($(LOCAL_ARM_MODE),)
-        LOCAL_ARM_MODE := arm
-        my_cflags += -marm
-        my_cflags :=  $(filter-out -mthumb,$(my_cflags))
+#        LOCAL_ARM_MODE := arm
+#        my_cflags += -marm
+#        my_cflags :=  $(filter-out -mthumb,$(my_cflags))
       endif
     endif
     ifeq ($(TARGET_ARCH),arm64)
       ifeq ($(LOCAL_ARM_MODE),)
         ifneq ($(TARGET_2ND_ARCH),)
-          LOCAL_ARM_MODE := arm
-          my_cflags += -marm
-          my_cflags :=  $(filter-out -mthumb,$(my_cflags))
+#          LOCAL_ARM_MODE := arm
+#          my_cflags += -marm
+#          my_cflags :=  $(filter-out -mthumb,$(my_cflags))
         else
-          LOCAL_ARM_MODE := arm64
-          my_cflags :=  $(filter-out -mthumb,$(my_cflags))
+#          LOCAL_ARM_MODE := arm64
+#          my_cflags :=  $(filter-out -mthumb,$(my_cflags))
         endif
       endif
     endif
   else
     LOCAL_ARM_MODE := thumb
-    my_cflags += -mthumb
-    my_cflags :=  $(filter-out -marm,$(my_cflags))
+#    my_cflags += -mthumb
+#    my_cflags :=  $(filter-out -marm,$(my_cflags))
   endif
 endif
 
